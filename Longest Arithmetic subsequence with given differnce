@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int longestSubsequence(vector<int>& arr, int d) {
+        unordered_map<int,int>mp;
+        mp[arr[0]]=1;
+        int mx=1;
+        for(int i=1;i<arr.size();++i)
+        {  mp[arr[i]]=1;
+           if(mp.find(arr[i]-d)!=mp.end())
+            mp[arr[i]]=mp[arr[i]-d]+1;   
+          mx=max(mx,mp[arr[i]]);
+        }
+        return mx;
+    }
+};
